@@ -20,7 +20,7 @@ userController.createUser = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       status: "fail",
-      error,
+      message: error.message,
     });
   }
 };
@@ -38,7 +38,7 @@ userController.loginWithEmail = async (req, res) => {
     }
     throw new Error("Invalid email or password");
   } catch (error) {
-    res.status(400).json({ status: "fail", error });
+    res.status(400).json({ status: "fail", message: error.message });
   }
 };
 
