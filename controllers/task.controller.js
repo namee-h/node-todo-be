@@ -1,4 +1,4 @@
-const Task = require("../model/Task");
+const Task = require("../models/Task");
 
 const taskController = {};
 

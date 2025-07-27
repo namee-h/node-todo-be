@@ -6,12 +6,13 @@ const indexRouter = require("./routes/index");
 require("dotenv").config();
 const app = express();
 const MONGODB_URI_PROD = process.env.MONGODB_URI_PROD;
+const MONGODB_URI_LOCAL = process.env.MONGODB_URI_LOCAL;
 const PORT = process.env.PORT || 8000;
 app.use(bodyParser.json());
 app.use(cors());
 app.use("/api", indexRouter);
 
-const mongoURI = MONGODB_URI_PROD;
+const mongoURI = PORT === 8000 ? MONGODB_URI_LOCAL : MONGODB_URI_PROD;
 
 mongoose
   .connect(mongoURI, { useNewUrlParser: true })
