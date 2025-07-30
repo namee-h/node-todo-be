@@ -20,6 +20,12 @@ const taskSchema = Schema(
   { timestamps: true }
 );
 
+taskSchema.methods.toJSON = function () {
+  const obj = this._doc;
+  delete obj.__v;
+  return obj;
+};
+
 const Task = mongoose.model("Task", taskSchema);
 
 module.exports = Task;
